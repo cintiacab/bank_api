@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-class UserRepositoryInterface(ABC):
+class PessoaJuridicaRepositoryInterface(ABC):
 
     @abstractmethod
     def create_user(self, faturamento: float, idade: int, 

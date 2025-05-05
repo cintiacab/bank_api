@@ -1,7 +1,7 @@
 from src.models.entities.pessoa_fisica import PessoaFisicaTable
-from src.models.interfaces.user_repository import UserRepositoryInterface
+from src.models.interfaces.pessoa_fisica_repository import PessoaFisicaRepositoryInterface
 
-class PessoaFisicaRepository(UserRepositoryInterface):
+class PessoaFisicaRepository(PessoaFisicaRepositoryInterface):
     def __init__(self, db_connection) -> None:
         self.__db_connection = db_connection
 
