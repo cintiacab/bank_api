@@ -1,6 +1,7 @@
 from src.models.interfaces.pessoa_juridica_repository import PessoaJuridicaRepositoryInterface
+from .interfaces.pj_withdrawer_controller import PJWithdrawerControllerInterface
 
-class PJWithdrawerController:
+class PJWithdrawerController(PJWithdrawerControllerInterface):
     def __init__(self, user_repository: PessoaJuridicaRepositoryInterface) -> None:
         self.__user_repository = user_repository
 

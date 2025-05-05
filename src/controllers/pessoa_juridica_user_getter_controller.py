@@ -1,8 +1,9 @@
 from typing import Dict, List
 from src.models.entities.pessoa_juridica import PessoaJuridicaTable
 from src.models.interfaces.pessoa_juridica_repository import PessoaJuridicaRepositoryInterface
+from .interfaces.pj_user_getter_controller import PJGetUsersControllerInterface
 
-class PJGetUsersController:
+class PJGetUsersController(PJGetUsersControllerInterface):
     def __init__(self, user_repository: PessoaJuridicaRepositoryInterface) -> None:
         self.__user_repository = user_repository
 

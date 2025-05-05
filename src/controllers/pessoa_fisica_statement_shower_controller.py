@@ -1,11 +1,12 @@
 from typing import Dict
 from src.models.interfaces.pessoa_fisica_repository import PessoaFisicaRepositoryInterface
+from .interfaces.pf_statement_shower_controller import PFStatementShowerControllerInterface
 
-class PFStatementShowerController:
+class PFStatementShowerController(PFStatementShowerControllerInterface):
     def __init__(self, user_repository: PessoaFisicaRepositoryInterface) -> None:
         self.__user_repository = user_repository
 
-    def show_statement(self, user_id: int):
+    def show_statement(self, user_id: int) -> Dict:
         statement = self.__get_statement_in_db(user_id)
         response = self.__format_response(statement)
         return response

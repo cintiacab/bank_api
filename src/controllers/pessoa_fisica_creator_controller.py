@@ -1,7 +1,8 @@
 from typing import Dict
 from src.models.interfaces.pessoa_fisica_repository import PessoaFisicaRepositoryInterface
+from .interfaces.pf_creator_controller import PFCreatorControllerInterface
 
-class PessoaFisicaCreatorController:
+class PessoaFisicaCreatorController(PFCreatorControllerInterface):
     def __init__(self, user_repository: PessoaFisicaRepositoryInterface) -> None:
         self.__user_repository = user_repository
 

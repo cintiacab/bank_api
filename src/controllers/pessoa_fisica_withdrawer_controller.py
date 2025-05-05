@@ -1,6 +1,7 @@
 from src.models.interfaces.pessoa_fisica_repository import PessoaFisicaRepositoryInterface
+from .interfaces.pf_withdrawer_controller import PFWithdrawerControllerInterface
 
-class PFWithdrawerController:
+class PFWithdrawerController(PFWithdrawerControllerInterface):
     def __init__(self, user_repository: PessoaFisicaRepositoryInterface) -> None:
         self.__user_repository = user_repository
 

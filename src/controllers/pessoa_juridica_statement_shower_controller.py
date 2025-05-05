@@ -1,11 +1,12 @@
 from typing import Dict
 from src.models.interfaces.pessoa_juridica_repository import PessoaJuridicaRepositoryInterface
+from .interfaces.pj_statement_shower_controller import PJStatementShowerControllerInterface
 
-class PJStatementShowerController:
+class PJStatementShowerController(PJStatementShowerControllerInterface):
     def __init__(self, user_repository: PessoaJuridicaRepositoryInterface) -> None:
         self.__user_repository = user_repository
 
-    def show_statement(self):
+    def show_statement(self) -> Dict:
         statement = self.__get_statement_in_db
         response = self.__format_response(statement)
         return response

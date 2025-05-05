@@ -1,7 +1,8 @@
 from typing import Dict
 from src.models.interfaces.pessoa_juridica_repository import PessoaJuridicaRepositoryInterface
+from .interfaces.pj_creator_controller import PJCreatorControllerInterface
 
-class PessoaJuridicaCreatorController:
+class PessoaJuridicaCreatorController(PJCreatorControllerInterface):
     def __init__(self, user_repository: PessoaJuridicaRepositoryInterface) -> None:
         self.__user_repository = user_repository
 

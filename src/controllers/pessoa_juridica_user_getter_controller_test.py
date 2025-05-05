@@ -1,6 +1,6 @@
 from typing import List
 from src.models.entities.pessoa_juridica import PessoaJuridicaTable
-from .pessoa_juridica_get_users_controller import PJGetUsersController
+from .pessoa_juridica_user_getter_controller import PJGetUsersController
 
 class MockRepository:
     def get_users(self) -> List[PessoaJuridicaTable]:
