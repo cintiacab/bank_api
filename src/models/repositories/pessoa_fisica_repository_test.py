@@ -43,14 +43,6 @@ def test_get_users():
     repo.get_users()
 
     mock_query = mock_conn.session.query.return_value
-    mock_with_entities = mock_query.with_entities.return_value
 
     mock_conn.session.query.assert_called_once_with(PessoaFisicaTable)
-    mock_query.with_entities.assert_called_once_with(
-                            PessoaFisicaTable.id,
-                            PessoaFisicaTable.nome_completo,
-                            PessoaFisicaTable.idade,
-                            PessoaFisicaTable.celular,
-                            PessoaFisicaTable.email,
-                            PessoaFisicaTable.categoria)
-    mock_with_entities.all.assert_called_once()
+    mock_query.all.assert_called_once()

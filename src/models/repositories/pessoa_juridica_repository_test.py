@@ -36,15 +36,10 @@ def test_bank_statement():
 
     mock_query = mock_conn.session.query.return_value
     mock_filter = mock_query.filter.return_value
-    mock_with_entities = mock_filter.with_entities.return_value
 
     mock_conn.session.query.assert_called_once_with(PessoaJuridicaTable)
     mock_query.filter.assert_called_once_with(PessoaJuridicaTable.id == 2)
-    mock_filter.with_entities.assert_called_once_with(PessoaJuridicaTable.id,
-                            PessoaJuridicaTable.nome_fantasia,
-                            PessoaJuridicaTable.faturamento,
-                            PessoaJuridicaTable.saldo)
-    mock_with_entities.one.assert_called_once()
+    mock_filter.one.assert_called_once()
 
 def test_withdraw_account():
     mock_conn = MockConnection()

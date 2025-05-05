@@ -47,7 +47,7 @@ class PessoaJuridicaCreatorController:
     def __format_response(self, pessoa_juridica_info) -> Dict:
         return{
             "data":{
-                "type": "Pessoa Física",
+                "type": "Pessoa Jurídica",
                 "count": 1,
                 "attributes": pessoa_juridica_info
             }

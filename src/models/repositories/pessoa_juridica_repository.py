@@ -1,3 +1,4 @@
+from typing import Dict, List
 from src.models.entities.pessoa_juridica import PessoaJuridicaTable
 from src.models.interfaces.pessoa_juridica_repository import PessoaJuridicaRepositoryInterface
 
@@ -25,48 +26,33 @@ class PessoaJuridicaRepository(PessoaJuridicaRepositoryInterface):
                 database.session.rollback()
                 raise exception
 
-    def get_users(self):
+    def get_users(self) -> List[PessoaJuridicaTable]:
         with self.__db_connection as database:
             try:
-                users = (
-                    database.session
-                        .query(PessoaJuridicaTable)
-                        .with_entities(
-                            PessoaJuridicaTable.id,
-                            PessoaJuridicaTable.nome_fantasia,
-                            PessoaJuridicaTable.idade,
-                            PessoaJuridicaTable.celular,
-                            PessoaJuridicaTable.email_corporativo,
-                            PessoaJuridicaTable.categoria)
-                        .all()
-                )
+                users = database.session.query(PessoaJuridicaTable).all()               
                 return users
             except Exception:
                 return None
 
-    def bank_statement(self, user_id: int):
+    def bank_statement(self, user_id: int) -> PessoaJuridicaTable:
         with self.__db_connection as database:
             try:
                 statement = (
                     database.session
                         .query(PessoaJuridicaTable)
                         .filter(PessoaJuridicaTable.id == user_id)
-                        .with_entities(PessoaJuridicaTable.id,
-                            PessoaJuridicaTable.nome_fantasia,
-                            PessoaJuridicaTable.faturamento,
-                            PessoaJuridicaTable.saldo)
                         .one()
                 )
                 return statement
             except Exception:
                 return None
 
-    def withdraw_account(self, user_id: int, withdraw_amount: float):
+    def withdraw_account(self, user_id: int, withdrawal_amount: float) -> None:
         with self.__db_connection as database:
             try: 
                 database.session.query(PessoaJuridicaTable).filter(
                 PessoaJuridicaTable.id == user_id).update(
-                {PessoaJuridicaTable.saldo: PessoaJuridicaTable.saldo - withdraw_amount})
+                {PessoaJuridicaTable.saldo: PessoaJuridicaTable.saldo - withdrawal_amount})
                 
                 database.session.commit()
             except Exception as exception:
