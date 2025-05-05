@@ -1,8 +1,9 @@
 from src.controllers.interfaces.pf_user_getter_controller import PFGetUsersControllerInterface
 from .http_types.http_request import HttpRequest
 from .http_types.http_response import HttpResponse
+from .interfaces.view_interface import ViewInterface
 
-class PFGetUsersView:
+class PFGetUsersView(ViewInterface):
     def __init__(self, controller: PFGetUsersControllerInterface) -> None:
         self.__controller = controller
 

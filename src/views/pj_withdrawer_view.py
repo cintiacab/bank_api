@@ -1,8 +1,9 @@
 from src.controllers.interfaces.pj_withdrawer_controller import PJWithdrawerControllerInterface
 from .http_types.http_request import HttpRequest
 from .http_types.http_response import HttpResponse
+from .interfaces.view_interface import ViewInterface
 
-class PJWithdrawerView:
+class PJWithdrawerView(ViewInterface):
     def __init__(self, controller: PJWithdrawerControllerInterface) -> None:
         self.__controller = controller
 

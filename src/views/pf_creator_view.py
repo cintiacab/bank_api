@@ -1,8 +1,9 @@
 from src.controllers.interfaces.pf_creator_controller import PFCreatorControllerInterface
 from .http_types.http_request import HttpRequest
 from .http_types.http_response import HttpResponse
+from .interfaces.view_interface import ViewInterface
 
-class PFCreatorView:
+class PFCreatorView(ViewInterface):
     def __init__(self, controller: PFCreatorControllerInterface) -> None:
         self.__controller = controller
 

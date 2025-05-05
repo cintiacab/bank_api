@@ -1,8 +1,9 @@
 from src.controllers.interfaces.pj_creator_controller import PJCreatorControllerInterface
 from .http_types.http_request import HttpRequest
 from .http_types.http_response import HttpResponse
+from .interfaces.view_interface import ViewInterface
 
-class PJCreatorView:
+class PJCreatorView(ViewInterface):
     def __init__(self, controller: PJCreatorControllerInterface) -> None:
         self.__controller = controller
 
