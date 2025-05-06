@@ -52,7 +52,7 @@ class PessoaFisicaRepository(PessoaFisicaRepositoryInterface):
             try: 
                 database.session.query(PessoaFisicaTable).filter(
                 PessoaFisicaTable.id == user_id).update(
-                {PessoaFisicaTable.saldo: PessoaFisicaTable.saldo - withdrawal_amount})
+                {PessoaFisicaTable.saldo: PessoaFisicaTable.saldo - withdrawal_amount["value"]})
                 
                 database.session.commit()
             except Exception as exception:

@@ -10,5 +10,5 @@ class PFWithdrawerController(PFWithdrawerControllerInterface):
         self.__user_repository.withdraw_account(user_id, withdrawal_amount)
 
     def __validate_amount(self, withdrawal_amount: float) -> None:
-        if withdrawal_amount > 3000.00:
+        if withdrawal_amount["value"] > 3000.00:
             raise Exception("The amount exceeds your daily withdrawal limit")
