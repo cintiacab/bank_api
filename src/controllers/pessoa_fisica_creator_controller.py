@@ -1,6 +1,7 @@
 from typing import Dict
 from src.models.interfaces.pessoa_fisica_repository import PessoaFisicaRepositoryInterface
 from .interfaces.pf_creator_controller import PFCreatorControllerInterface
+from src.errors.errors_types.http_bad_request import HttpBadRequest
 
 class PessoaFisicaCreatorController(PFCreatorControllerInterface):
     def __init__(self, user_repository: PessoaFisicaRepositoryInterface) -> None:
@@ -35,7 +36,7 @@ class PessoaFisicaCreatorController(PFCreatorControllerInterface):
             or not isinstance(renda_mensal, float)
             or not isinstance(idade, int)
             or not isinstance(saldo, float)
-            ): raise Exception("Invalid Input")
+            ): raise HttpBadRequest("Invalid Input")
     
     def __insert_user_in_db(self, renda_mensal: float, idade: int, 
                     nome_completo: str, celular: str, 

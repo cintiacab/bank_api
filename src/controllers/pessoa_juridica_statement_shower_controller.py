@@ -1,6 +1,7 @@
 from typing import Dict
 from src.models.interfaces.pessoa_juridica_repository import PessoaJuridicaRepositoryInterface
 from .interfaces.pj_statement_shower_controller import PJStatementShowerControllerInterface
+from src.errors.errors_types.http_not_found import HttpNotFound
 
 class PJStatementShowerController(PJStatementShowerControllerInterface):
     def __init__(self, user_repository: PessoaJuridicaRepositoryInterface) -> None:
@@ -13,6 +14,9 @@ class PJStatementShowerController(PJStatementShowerControllerInterface):
     
     def __get_statement_in_db(self, user_id: int):
         statement = self.__user_repository.bank_statement(user_id)
+        if not statement:
+            raise HttpNotFound("User Not Found")
+
         return statement
     
     def __format_response(self, statement: Dict):

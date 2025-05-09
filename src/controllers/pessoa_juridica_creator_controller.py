@@ -1,6 +1,7 @@
 from typing import Dict
 from src.models.interfaces.pessoa_juridica_repository import PessoaJuridicaRepositoryInterface
 from .interfaces.pj_creator_controller import PJCreatorControllerInterface
+from src.errors.errors_types.http_bad_request import HttpBadRequest
 
 class PessoaJuridicaCreatorController(PJCreatorControllerInterface):
     def __init__(self, user_repository: PessoaJuridicaRepositoryInterface) -> None:
@@ -35,7 +36,7 @@ class PessoaJuridicaCreatorController(PJCreatorControllerInterface):
             or not isinstance(faturamento, float)
             or not isinstance(idade, int)
             or not isinstance(saldo, float)
-            ): raise Exception("Invalid Input")
+            ): raise HttpBadRequest("Invalid Input")
     
     def __insert_user_in_db(self, faturamento: float, idade: int, 
                     nome_fantasia: str, celular: str, 

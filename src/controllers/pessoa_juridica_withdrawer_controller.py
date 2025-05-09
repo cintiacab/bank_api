@@ -1,5 +1,6 @@
 from src.models.interfaces.pessoa_juridica_repository import PessoaJuridicaRepositoryInterface
 from .interfaces.pj_withdrawer_controller import PJWithdrawerControllerInterface
+from src.errors.errors_types.http_unprocessable_entity import HttpUnprocessableEntity
 
 class PJWithdrawerController(PJWithdrawerControllerInterface):
     def __init__(self, user_repository: PessoaJuridicaRepositoryInterface) -> None:
@@ -11,4 +12,4 @@ class PJWithdrawerController(PJWithdrawerControllerInterface):
 
     def __validate_amount(self, withdrawal_amount: float) -> None:
         if withdrawal_amount["value"] > 50000.00:
-            raise Exception("The amount exceeds your daily withdrawal limit")
+            raise HttpUnprocessableEntity("The amount exceeds your daily withdrawal limit")
