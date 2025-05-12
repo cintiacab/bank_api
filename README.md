@@ -11,9 +11,6 @@ API Project developed using MVC Architecture <br/>
 
 <br>
 
-<p align="center">
-  <img alt="Projeto Discover" src=".github/preview.jpg" width="100%">
-</p>
 
 ## 🚀 Technologies
 
